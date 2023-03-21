@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { Button } from '@acme/ui';
+import { IBook } from '@acme/shared-models';
 
 export interface BookProps {
-  book: any;
-  // New prop
-  onAdd: (book: any) => void;
+  book: IBook;
+  onAdd: (book: IBook) => void;
 }
 
 const StyledBook = styled.div`
