@@ -1,17 +1,13 @@
-import { render } from '@testing-library/react';
-
+import { render, cleanup, waitFor } from '@testing-library/react';
 import App from './app';
-
 describe('App', () => {
-  it('should render successfully', () => {
+  afterEach(cleanup);
+  it('should render successfully', async () => {
     const { baseElement } = render(<App />);
-
-    expect(baseElement).toBeTruthy();
+    await waitFor(() => expect(baseElement).toBeTruthy());
   });
-
-  it('should have a greeting as the title', () => {
+  it('should have a header as the title', async () => {
     const { getByText } = render(<App />);
-
-    expect(getByText(/Welcome bookstore/gi)).toBeTruthy();
+    await waitFor(() => expect(getByText('Bookstore')).toBeTruthy());
   });
 });
